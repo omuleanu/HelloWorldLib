@@ -6,10 +6,16 @@ pipeline {
         cleanWs()
       }
     }
+
+    stage('Print Branch Name') {
+       steps {
+        echo "Current branch name: ${env.BRANCH_NAME}"
+      }
+    }
     
     stage('Checkout Code') {
       steps {
-        git branch: '${env.BRANCH_NAME}', 
+        git branch: 'jenkins', 
         url: 'https://github.com/omuleanu/HelloWorldLib.git', 
         credentialsId: 'githubHelloPAT'
       }
