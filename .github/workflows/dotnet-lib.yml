@@ -1,5 +1,5 @@
 name: .net core lib build test
-run-name: ${{ github.actor }} hi
+run-name: build and test
 on: [push]
 
 jobs:
