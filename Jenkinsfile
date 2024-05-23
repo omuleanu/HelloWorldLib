@@ -11,7 +11,7 @@ pipeline {
       steps {
         git branch: 'master', 
         url: 'https://github.com/omuleanu/HelloWorldLib.git', 
-        credentialsId: 'github-hello-token'
+        credentialsId: 'githubHelloPAT'
       }
     }
     
