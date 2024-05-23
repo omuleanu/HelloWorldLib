@@ -8,7 +8,8 @@ pipeline {
     }
     
     stage('Checkout Code') {
-      steps { 
+      steps {
+        git branch: '${env.BRANCH_NAME}', 
         url: 'https://github.com/omuleanu/HelloWorldLib.git', 
         credentialsId: 'githubHelloPAT'
       }
