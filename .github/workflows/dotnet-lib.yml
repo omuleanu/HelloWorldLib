@@ -1,5 +1,5 @@
-name: .NET Core lib build test
-
+name: .net core lib build test
+run-name: ${{ github.actor }} hi
 on:
   push:
     branches: [ "${{ github.ref_name }}" ]
