@@ -35,5 +35,11 @@ pipeline {
       }
     }
 
+    stage('Run tests') {
+      steps {
+        bat 'dotnet test HelloWorldLib\\HelloWorldLib.sln'
+      }
+    }
+
   }
 }
