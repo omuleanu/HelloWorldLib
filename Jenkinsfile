@@ -31,7 +31,7 @@ pipeline {
     
     stage('Build Solution') {
       steps {
-        bat 'msbuild /p:Configuration=Release HelloWorldLib\\HelloWorldLib.sln'
+        bat 'dotnet build  HelloWorldLib.sln --configuration Release'
       }
     }
 
