@@ -23,9 +23,9 @@ pipeline {
     
     stage('Build Solution') {
       steps {
-        // Assuming Windows and MSBuild 17 or later
-        bat 'msbuild /p:Configuration=Release HelloWorldLib\HelloWorldLib.sln'
+        bat 'msbuild /p:Configuration=Release HelloWorldLib\\HelloWorldLib.sln'
       }
     }
+
   }
 }
