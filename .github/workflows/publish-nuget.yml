@@ -1,5 +1,5 @@
-name: hi2
-run-name: hi2
+name: publish nuget
+run-name: publish nuget package
 on: [push]
 jobs:
   Explore-GitHub-Actions:
