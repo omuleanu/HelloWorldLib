@@ -1,5 +1,5 @@
-name: publish nuget2
-run-name: publish nuget package2
+name: publish nuget3
+run-name: publish nuget package3
 on: [release]
 
 jobs:
