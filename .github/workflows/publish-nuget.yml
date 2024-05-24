@@ -2,8 +2,7 @@ name: Build and Publish NuGet Package
 run-name: publish nuget package
 
 on:
-  release:
-    types: [ published ]
+  release
 
 jobs:
   build-and-publish:
