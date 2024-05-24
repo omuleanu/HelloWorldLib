@@ -11,9 +11,15 @@
     <RepositoryUrl>https://github.com/omuleanu/HelloWorldLib.git</RepositoryUrl>
     <PackageTags>C# dotnet .net</PackageTags>
     <PackageId>Omu.$(AssemblyName)</PackageId>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <PackageIcon>hello.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\hello.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
