@@ -4,9 +4,32 @@ on:
   release
 
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  build-and-publish:
+    runs-on: windows-latest
+
+    env:
+      Solution_Name: HelloWorldLib\HelloWorldLib.sln 
+      PACKAGE_NAME: Omu.HelloWorldLib 
+      PACKAGE_VERSION: ${{ github.event.release.tag_name }}  # Get version from release tag
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}  # Reference secret for API key
+
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."      
-      - run: echo "🔎 The name of your branch is ${{ github.ref_name }} and your repository is ${{ github.repository }}."      
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore $Solution_Name
+
+      - name: Build the solution
+        run: dotnet build $Solution_Name -c Release
+
+      - name: Pack the NuGet package
+        run: dotnet pack $Solution_Name -c Release /p:PackageVersion=$PACKAGE_VERSION
+
+      - name: Publish the NuGet package
+        run: |
+          dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json
+          --api-key $NUGET_API_KEY    
