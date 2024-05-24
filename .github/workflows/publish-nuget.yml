@@ -1,0 +1,38 @@
+name: Build and Publish NuGet Package
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest                               
+
+    env:
+      Solution_Name: HelloWorldLib\HelloWorldLib.sln 
+      PACKAGE_NAME: Omu.HelloWorldLib 
+      PACKAGE_VERSION: ${{ github.event.release.tag_name }}  # Get version from release tag
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}  # Reference secret for API key
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore $Solution_Name
+
+      - name: Build the solution
+        run: dotnet build $Solution_Name -c Release
+
+      - name: Pack the NuGet package
+        run: dotnet pack $Solution_Name -c Release /p:PackageVersion=$PACKAGE_VERSION
+
+      - name: Publish the NuGet package
+        run: |
+          dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json
+          --api-key $NUGET_API_KEY
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
