@@ -1,6 +1,6 @@
 name: publish nuget2
 run-name: publish nuget package2
-on: [push]
+on: [release]
 
 jobs:
 
