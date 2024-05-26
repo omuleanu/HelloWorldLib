@@ -12,9 +12,8 @@
     <PackageTags>C# dotnet .net</PackageTags>
     <PackageId>Omu.$(AssemblyName)</PackageId>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <PackageIcon>hello.png</PackageIcon>
-    <AssemblyVersion>1.0.2</AssemblyVersion>
-    <FileVersion>1.0.2</FileVersion>
+    <PackageIcon>hello.png</PackageIcon>    
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
